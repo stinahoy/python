@@ -8,7 +8,7 @@ planeter[3] = "Mars"
 print(planeter)
 
 planeter.append("Neptun")
-priny(planeter)
+print(planeter)
 planeter.append("Pluto")
 print(planeter)
 
@@ -21,5 +21,5 @@ print(random_list[2][2])
 random_list[2][2] = "Forelesning"
 print(random_list[2])
 
-random_list[2].insert(_index 1, _object: "Spørsmål i timen")
+random_list[2].insert(_index 1, _object: "Spørsmål i timen") # type: ignore
 print(random_list)
