@@ -3,8 +3,11 @@ print(message)
 
 tall = 42
 
-if tall < 30:
-    print("FEIL!") 
+if tall == 42:
+    print("Det er riktig meningen med livetv er 42!") 
 
-elif tall < 50:
+elif 30 < tall < 50:
     print("nærme men feil")
+
+else:
+    print("FEIL!")
