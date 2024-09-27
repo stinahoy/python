@@ -5,6 +5,6 @@ print("De to siste bøkene:", tolkenboker[-2:])
 
 tolkenboker += ["The Silmarillion", "Unfinished Tales"]
 
-tolkenboker[2:5] = ["Lord of the rings: {title}" for title in tolkenboker[2:5]]
+tolkenboker[2:5] = [f"Lord of the rings: {title}" for title in tolkenboker[2:5]]
 
 print(sorted(tolkenboker))

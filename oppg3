@@ -1,15 +1,11 @@
-pakke_liste = []
-while True:
-    command = input("Skriv 'l' for å legge til, 'd' for å slette, 'p' for print, 'q' for quit: ")
-    if command == 'l':
-        ting = input("Legg til: ")
-        pakke_liste_list.append(ting)
-    elif command == 'd':
-        ting = input("Slett: ")
-        packke_liste.remove(ting) if ting in pakke_liste else print("Ting ikke funnet.")
-    elif command == 'p':
-        print("Pakke liste:", pakke_liste)
-    elif command == 'q':
-        break
-    else:
-        print("Kommando ikke funnet.")
+books = ["The Hobbit", "The Fellowship of the Ring", "The Two Towers", "The Return of the King", "Harry Potter"]
+
+
+lotr_books = []
+
+for book in books:
+    if book in ["The Fellowship of the Ring", "The Two Towers", "The Return of the King"]:
+        lotr_books.append(book)
+
+for book in lotr_books:
+    print(book)
