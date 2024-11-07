@@ -1,0 +1,166 @@
+oppgave 2
+
+Code Generated #1: Basic Blackjack Game
+
+import random
+
+def create_deck():
+    deck = []
+    for value in range(2, 11):
+        deck.extend([value] * 4)  # 4 of each number card
+    deck.extend([10] * 12)  # 4 Jacks, 4 Queens, 4 Kings
+    deck.extend([1, 11])  # 4 Aces
+    random.shuffle(deck)
+    return deck
+
+def calculate_hand_value(hand):
+    value = sum(hand)
+    aces = hand.count(11)
+    while value > 21 and aces:
+        value -= 10
+        aces -= 1
+    return value
+
+def blackjack():
+    deck = create_deck()
+    player_hand = [deck.pop(), deck.pop()]
+    dealer_hand = [deck.pop(), deck.pop()]
+
+    print(f"Your hand: {player_hand}, value: {calculate_hand_value(player_hand)}")
+    print(f"Dealer's visible card: {dealer_hand[0]}")
+
+    if calculate_hand_value(player_hand) == 21:
+        return "Blackjack! You win 2x your bet!"
+
+    while True:
+        action = input("Do you want to Hit or Stand? ").strip().lower()
+        if action == 'hit':
+            player_hand.append(deck.pop())
+            print(f"Your hand: {player_hand}, value: {calculate_hand_value(player_hand)}")
+            if calculate_hand_value(player_hand) > 21:
+                return "Bust! Dealer wins."
+        elif action == 'stand':
+            break
+
+    while calculate_hand_value(dealer_hand) < 17:
+        dealer_hand.append(deck.pop())
+
+    print(f"Dealer's hand: {dealer_hand}, value: {calculate_hand_value(dealer_hand)}")
+    if calculate_hand_value(dealer_hand) > 21:
+        return "Dealer busts! You win!"
+    elif calculate_hand_value(player_hand) > calculate_hand_value(dealer_hand):
+        return "You win!"
+    elif calculate_hand_value(player_hand) < calculate_hand_value(dealer_hand):
+        return "Dealer wins."
+    else:
+        return "It's a tie."
+
+print(blackjack())
+
+
+Code Generated #2: Blackjack with Betting System
+
+import random
+
+def create_deck():
+    deck = []
+    for value in range(2, 11):
+        deck.extend([value] * 4)
+    deck.extend([10] * 12)
+    deck.extend([1, 11])
+    random.shuffle(deck)
+    return deck
+
+def calculate_hand_value(hand):
+    value = sum(hand)
+    aces = hand.count(11)
+    while value > 21 and aces:
+        value -= 10
+        aces -= 1
+    return value
+
+def blackjack():
+    chips = 100
+    while chips > 0:
+        print(f"You have {chips} chips.")
+        bet = int(input("Enter your bet: "))
+        if bet > chips or bet <= 0:
+            print("Invalid bet. Try again.")
+            continue
+
+        deck = create_deck()
+        player_hand = [deck.pop(), deck.pop()]
+        dealer_hand = [deck.pop(), deck.pop()]
+
+        print(f"Your hand: {player_hand}, value: {calculate_hand_value(player_hand)}")
+        print(f"Dealer's visible card: {dealer_hand[0]}")
+
+        if calculate_hand_value(player_hand) == 21:
+            chips += bet
+            print("Blackjack! You win 2x your bet!")
+            continue
+
+        while True:
+            action = input("Do you want to Hit or Stand? ").strip().lower()
+            if action == 'hit':
+                player_hand.append(deck.pop())
+                print(f"Your hand: {player_hand}, value: {calculate_hand_value(player_hand)}")
+                if calculate_hand_value(player_hand) > 21:
+                    chips -= bet
+                    print("Bust! Dealer wins.")
+                    break
+            elif action == 'stand':
+                break
+
+        while calculate_hand_value(dealer_hand) < 17:
+            dealer_hand.append(deck.pop())
+
+        print(f"Dealer's hand: {dealer_hand}, value: {calculate_hand_value(dealer_hand)}")
+        if calculate_hand_value(dealer_hand) > 21:
+            chips += bet
+            print("Dealer busts! You win!")
+        elif calculate_hand_value(player_hand) > calculate_hand_value(dealer_hand):
+            chips += bet
+            print("You win!")
+        elif calculate_hand_value(player_hand) < calculate_hand_value(dealer_hand):
+            chips -= bet
+            print("Dealer wins.")
+        else:
+            print("It's a tie.")
+
+    print("You are out of chips!")
+
+blackjack()
+
+
+Code Generated #3: Blackjack with Multiple Players
+
+import random
+
+def create_deck():
+    deck = []
+    for value in range(2, 11):
+        deck.extend([value] * 4)
+    deck.extend([10] * 12)
+    deck.extend([1, 11])
+    random.shuffle(deck)
+    return deck
+
+def calculate_hand_value(hand):
+    value = sum(hand)
+    aces = hand.count(11)
+    while value > 21 and aces:
+        value -= 10
+        aces -= 1
+    return value
+
+def blackjack():
+    num_players = int(input("Enter number of players: "))
+    players = [[] for _ in range(num_players)]
+    deck = create_deck()
+    dealer_hand = [deck.pop(), deck.pop()]
+
+    for i in range(num_players):
+        players[i].append(deck.pop())
+        players[i].append(deck.pop())
+        print(f"Player {i + 1}'s hand: {players[i]}, value: {calculate

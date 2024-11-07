@@ -1,0 +1,204 @@
+Code Generated #1: Basic Movie Class
+
+class Movie:
+    def __init__(self, title, year, score):
+        self.title = title
+        self.year = year
+        self.score = score
+
+    def info(self):
+        return f"{self.title} was released in {self.year} and currently has a score of {self.score}"
+
+# Creating movie objects
+inception = Movie("Inception", 2010, 8.8)
+the_martian = Movie("The Martian", 2015, 8.0)
+joker = Movie("Joker", 2019, 8.4)
+
+# Printing movie information
+print(inception.info())
+print(the_martian.info())
+print(joker.info())
+
+Code Generated #2: Enhanced Movie Class with Additional Method
+
+class Movie:
+    def __init__(self, title, year, score):
+        self.title = title
+        self.year = year
+        self.score = score
+
+    def info(self):
+        return f"{self.title} was released in {self.year} and currently has a score of {self.score}"
+
+    def detailed_info(self):
+        return f"Title: {self.title}\nYear: {self.year}\nScore: {self.score}"
+
+# Creating movie objects
+inception = Movie("Inception", 2010, 8.8)
+the_martian = Movie("The Martian", 2015, 8.0)
+joker = Movie("Joker", 2019, 8.4)
+
+# Printing movie information using the info method
+print(inception.info())
+print(the_martian.info())
+print(joker.info())
+
+# Printing detailed information
+print(inception.detailed_info())
+
+
+Code Generated #3: Movie Class with List of Movies
+
+class Movie:
+    def __init__(self, title, year, score):
+        self.title = title
+        self.year = year
+        self.score = score
+
+    def info(self):
+        return f"{self.title} was released in {self.year} and currently has a score of {self.score}"
+
+class MovieCollection:
+    def __init__(self):
+        self.movies = []
+
+    def add_movie(self, movie):
+        self.movies.append(movie)
+
+    def display_movies(self):
+        for movie in self.movies:
+            print(movie.info())
+
+# Creating movie objects
+inception = Movie("Inception", 2010, 8.8)
+the_martian = Movie("The Martian", 2015, 8.0)
+joker = Movie("Joker", 2019, 8.4)
+
+# Creating a movie collection and adding movies
+collection = MovieCollection()
+collection.add_movie(inception)
+collection.add_movie(the_martian)
+collection.add_movie(joker)
+
+# Displaying all movies in the collection
+collection.display_movies()
+
+bare oppg a
+
+Code Generated #1: Basic Movie Class
+
+class Movie:
+    def __init__(self, title, year, score):
+        self.title = title
+        self.year = year
+        self.score = score
+
+# Creating movie objects
+inception = Movie("Inception", 2010, 8.8)
+the_martian = Movie("The Martian", 2015, 8.0)
+joker = Movie("Joker", 2019, 8.4)
+
+# Printing movie details
+for movie in [inception, the_martian, joker]:
+    print(f"{movie.title} was released in {movie.year} and currently has a score of {movie.score}")
+
+
+Code Generated #2: Movie Class with Method
+
+class Movie:
+    def __init__(self, title, year, score):
+        self.title = title
+        self.year = year
+        self.score = score
+
+    def display_info(self):
+        return f"{self.title} was released in {self.year} and currently has a score of {self.score}"
+
+# Creating movie objects
+inception = Movie("Inception", 2010, 8.8)
+the_martian = Movie("The Martian", 2015, 8.0)
+joker = Movie("Joker", 2019, 8.4)
+
+# Printing movie details
+for movie in [inception, the_martian, joker]:
+    print(movie.display_info())
+
+
+Code Generated #3: Movie Class with Class Method
+
+class Movie:
+    movies = []
+
+    def __init__(self, title, year, score):
+        self.title = title
+        self.year = year
+        self.score = score
+        Movie.movies.append(self)
+
+    @classmethod
+    def display_all_movies(cls):
+        for movie in cls.movies:
+            print(f"{movie.title} was released in {movie.year} and currently has a score of {movie.score}")
+
+# Creating movie objects
+inception = Movie("Inception", 2010, 8.8)
+the_martian = Movie("The Martian", 2015, 8.0)
+joker = Movie("Joker", 2019, 8.4)
+
+# Printing all movie details
+Movie.display_all_movies()
+
+bare oppg b
+
+Code Generated #1: Basic Movie Class with Info Method
+
+class Movie:
+    def __init__(self, title, director, year, genre):
+        self.title = title
+        self.director = director
+        self.year = year
+        self.genre = genre
+
+    def get_info(self):
+        return f"Title: {self.title}, Director: {self.director}, Year: {self.year}, Genre: {self.genre}"
+
+# Example usage
+movie1 = Movie("Inception", "Christopher Nolan", 2010, "Sci-Fi")
+print(movie1.get_info())
+
+
+Code Generated #2: Enhanced Movie Class with Additional Attributes
+
+class Movie:
+    def __init__(self, title, director, year, genre, rating):
+        self.title = title
+        self.director = director
+        self.year = year
+        self.genre = genre
+        self.rating = rating
+
+    def get_info(self):
+        return f"Title: {self.title}, Director: {self.director}, Year: {self.year}, Genre: {self.genre}, Rating: {self.rating}"
+
+# Example usage
+movie2 = Movie("The Shawshank Redemption", "Frank Darabont", 1994, "Drama", 9.3)
+print(movie2.get_info())
+
+
+Code Generated #3: Movie Class with a List of Actors
+
+class Movie:
+    def __init__(self, title, director, year, genre, actors):
+        self.title = title
+        self.director = director
+        self.year = year
+        self.genre = genre
+        self.actors = actors
+
+    def get_info(self):
+        actors_list = ', '.join(self.actors)
+        return f"Title: {self.title}, Director: {self.director}, Year: {self.year}, Genre: {self.genre}, Actors: {actors_list}"
+
+# Example usage
+movie3 = Movie("The Godfather", "Francis Ford Coppola", 1972, "Crime", ["Marlon Brando", "Al Pacino", "James Caan"])
+print(movie3.get_info())
