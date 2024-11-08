@@ -100,9 +100,7 @@ def play_blackjack():
                 break
             else:
                 print(f"You have {chips} chips left.")
-
-            spill_igjen = input("Do you want to play again? (y - Yes, n - No): ")
-            if spill_igjen() != 'y':
+            if input("Play another round? (y/n): ").lower() != 'y':
                 break
 
 
