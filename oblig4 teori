@@ -1,0 +1,100 @@
+T1
+
+En exception i programmering er en feil eller uventet hendelse som skjer under kjøring av et program. Dette kan for eksempel være forsøk på å dele et tall på null, åpne en fil som ikke eksisterer, eller konvertere en ugyldig streng til et tall. Når en exception oppstår, kan den føre til at programmet stopper hvis den ikke håndteres riktig.
+
+Hvordan håndtere exceptions:
+
+I Python kan vi håndtere exceptions ved å bruke try og except-blokker:
+try:
+    resultat = 10 / 0  # Dette vil føre til en ZeroDivisionError
+except ZeroDivisionError:
+    print("Kan ikke dele med null!")
+
+I dette eksempelet prøver try-blokken å utføre en operasjon som kan forårsake en feil. Hvis en ZeroDivisionError oppstår, vil programmet gå til except-blokken og kjøre koden der i stedet for å stoppe opp.
+
+Relevante tilfeller for exception-håndtering:
+
+	•	Filoperasjoner: Håndtere tilfeller der filer ikke finnes eller ikke kan åpnes.
+	•	Brukerinput: Forhindre at programmet krasjer hvis brukeren skriver inn ugyldig data.
+	•	Nettverksforbindelser: Takle situasjoner der tilkoblinger mislykkes eller avbrytes.
+
+Fordeler med å håndtere exceptions:
+
+	•	Robusthet: Programmet fortsetter å kjøre selv om en feil oppstår.
+	•	Brukervennlighet: Gir bedre tilbakemelding til brukeren om hva som gikk galt.
+	•	Feilsøking: Gjør det enklere å identifisere og håndtere spesifikke feil.
+
+Ved å bruke exceptions kan programmerere sikre at programmet fungerer mer stabilt og er i stand til å takle uforutsigbare situasjoner uten å stoppe helt.
+
+T2
+
+En klasse i programmering er en mal eller oppskrift som brukes til å lage objekter. Den definerer hvilke egenskaper (attributter) og handlinger (metoder) objektene skal ha. Dette gjør det enklere å organisere og strukturere koden, spesielt når man jobber med kompliserte systemer.
+
+Enkelt forklart:
+
+Tenk på en klasse som en blåkopi for å lage flere objekter med samme type egenskaper. For eksempel, hvis du har en klasse som heter Bil, kan den beskrive attributtene en bil har, som farge og merke, og metoder som beskriver handlinger, som å starte motoren.
+
+Eksempel 1:
+class Bil:
+    def __init__(self, merke, farge):
+        self.merke = merke
+        self.farge = farge
+
+    def kjør(self):
+        print(f"{self.merke} i fargen {self.farge} kjører.")
+
+# Lage objekter av klassen
+bil1 = Bil("Toyota", "rød")
+bil2 = Bil("Ford", "blå")
+
+bil1.kjør()  # Output: Toyota i fargen rød kjører.
+bil2.kjør()  # Output: Ford i fargen blå kjører.
+
+Eksempel 2:
+
+En klasse for en Person kan ha attributter som navn og alder, og metoder som si_hei():
+
+class Person:
+    def __init__(self, navn, alder):
+        self.navn = navn
+        self.alder = alder
+
+    def si_hei(self):
+        print(f"Hei, jeg heter {self.navn} og er {self.alder} år gammel.")
+
+# Lage et objekt av klassen
+person1 = Person("Eva", 30)
+person1.si_hei()  # Output: Hei, jeg heter Eva og er 30 år gammel.
+
+Ved å bruke klasser kan vi lage flere objekter med samme egenskaper og funksjonalitet, som gjør koden gjenbrukbar og organisert.
+
+T3
+
+Et objekt er en konkret forekomst av en klasse. Hvis en klasse er en oppskrift eller mal, er et objekt det ferdige produktet laget etter den malen. Klassen definerer hvilke egenskaper og handlinger objektene har, mens objektet er en spesifikk instans som faktisk eksisterer i minnet og kan brukes i koden.
+
+Relasjon mellom klasser og objekter:
+
+	•	Klasse: En beskrivelse av hvordan et objekt skal være, med definerte attributter (data) og metoder (funksjoner).
+	•	Objekt: En instans av klassen med spesifikke verdier for attributtene og evnen til å bruke metodene.
+
+Eksempel:
+
+Hvis vi har en klasse Hund som beskriver hva alle hunder har (som navn og rase) og kan gjøre (som å bjeffe), kan vi lage objekter av denne klassen:
+class Hund:
+    def __init__(self, navn, rase):
+        self.navn = navn
+        self.rase = rase
+
+    def bjeff(self):
+        print(f"{self.navn} sier voff!")
+
+# Lage objekter av klassen Hund
+hund1 = Hund("Max", "Labrador")
+hund2 = Hund("Bella", "Pudel")
+
+hund1.bjeff()  # Output: Max sier voff!
+hund2.bjeff()  # Output: Bella sier voff!
+
+I dette eksempelet er hund1 og hund2 objekter som er laget fra klassen Hund. De har spesifikke verdier for navn og rase, og de kan bruke metoden bjeff().
+
+Kort sagt, klassen er den generelle definisjonen, mens et objekt er en spesifikk instans som er laget basert på denne definisjonen.

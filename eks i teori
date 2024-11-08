@@ -1,0 +1,13 @@
+class sykkel:
+    def __init__(self, storelse, farge):
+        self.storelse = storelse
+        self.farge = farge
+
+    def kjør(self):
+        print(f"En {self.storelse} sykkel i fargen {self.farge} sykkler.")
+
+sykkel1 = sykkel("voksen", "svart")
+sykkel2 = sykkel("barne", "lilla")
+
+sykkel1.kjør()  
+sykkel2.kjør() 

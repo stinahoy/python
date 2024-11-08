@@ -13,41 +13,44 @@ full_deck = {
     "Queen of hearts": 10, "King of hearts": 10, "Ace of hearts": 11, "Two of spades": 2,
     "Three of spades": 3, "Four of spades": 4, "Five of spades": 5, "Six of spades": 6,
     "Seven of spades": 7, "Eight of spades": 8, "Nine of spades": 9, "Ten of spades": 10,
-    "Jack of spades": 10, "Queen of spades": 10, "King of spades": 10, "Ace of spades": 11,
+    "Jack of spades":  10, "Queen of spades": 10, "King of spades": 10, "Ace of spades": 11,
 }
 
-def get_ny_suffled_deck():
+def get_new_shuffled_deck():
     deck = list(full_deck.keys())
     random.shuffle(deck)
     return deck
 
-def get_card_verdi(card):
+def get_card_value(card):
     return full_deck[card]
 
-def kalkuler_hand_verdi(hand):
-    hand_verdi = sum(get_card_verdi(card) for card in hand)
-    aces = hand.count("Ace of clubs") + hand.count("Ace of diamonds") + hand.count("Ace of heart") + hand.count("Ace of spades")
-    while hand_verdi > 21 and aces:
-        hand_verdi -= 10
+def calculate_hand_value(hand):
+    hand_value = sum(get_card_value(card) for card in hand)
+    aces = hand.count("Ace of clubs") + hand.count("Ace of diamonds") + hand.count("Ace of hearts") + hand.count("Ace of spades")
+    while hand_value > 21 and aces:
+        hand_value -= 10
         aces -= 1
-    return hand_verdi
+    return hand_value
 
-def deal_opening_cards(deck):
-    spiller_hand = [deck.pop(), deck.pop()]
+def deal_initial_cards(deck):
+    player_hand = [deck.pop(), deck.pop()]
     dealer_hand = [deck.pop(), deck.pop()]
-    return spiller_hand, dealer_hand
+    return player_hand, dealer_hand
 
-def print_resultat(spiller_value, dealer_value, chips, bet):
+def print_result(player_value, dealer_value, chips, bet):
     if dealer_value > 21:
         print("Dealer busts! You win!")
         return chips + bet
-    elif spiller_value > dealer_value:
+    elif player_value > dealer_value:
         print("You win!")
         return chips + bet
+    elif player_value < dealer_value:
+        print("You lose!")
+        return chips - bet
     else:
-        print("Its a tie")
+        print("It's a tie!")
         return chips
-    
+
 def get_bet(chips):
     while True:
         try:
@@ -60,17 +63,17 @@ def get_bet(chips):
             print("Please enter a valid number.")
 
 def play_blackjack():
-    chips = 7
+    chips = 5
     while chips > 0:
-        deck = get_ny_suffled_deck()
-        spiller_hand, dealer_hand = deal_opening_cards(deck)
-
-        print(f"You have {spiller_hand}, total value: {kalkuler_hand_verdi(spiller_hand)}")
-        print(f"Dealers visible card: {dealer_hand[0]}")
+        deck = get_new_shuffled_deck()
+        player_hand, dealer_hand = deal_initial_cards(deck)
+        
+        print(f"You have: {player_hand}, total value: {calculate_hand_value(player_hand)}")
+        print(f"Dealer's visible card: {dealer_hand[0]}")
 
         bet = get_bet(chips)
 
-        if kalkuler_hand_verdi(spiller_hand) == 21:
+        if calculate_hand_value(player_hand) == 21:
             print("Blackjack! You win!")
             chips += bet
             continue
@@ -78,34 +81,30 @@ def play_blackjack():
         while True:
             choice = input("Choose: 1 - Hit, 2 - Stand: ")
             if choice == '1':
-                spiller_hand.append(deck.pop())
-                print(f"Your hand: {spiller_hand}, tottal value: {kalkuler_hand_verdi(spiller_hand)}")
-                if kalkuler_hand_verdi(spiller_hand) > 21:
+                player_hand.append(deck.pop())
+                print(f"Your hand: {player_hand}, total value: {calculate_hand_value(player_hand)}")
+                if calculate_hand_value(player_hand) > 21:
                     print("You bust! Dealer wins.")
                     chips -= bet
                     break
-                elif choice == '2':
-                    break
-
-            dealer_value = kalkuler_hand_verdi(dealer_hand)
-            while dealer_value < 17:
-                dealer_hand.append(deck.pop())
-                dealer_value = kalkuler_hand_verdi(dealer_hand)
-
-            print(f"Dealers hand: {dealer_hand}, total value: {dealer_value}")
-            chips = print_resultat(kalkuler_hand_verdi(spiller_hand), dealer_value, chips, bet)
-
-            if chips <= 0:
-                print("You have no chips left. Game over!")
-                break
-            else:
-                print(f"You have {chips} chips left.")
-
-            spill_igjen = input("Do you want to play again? (y - Yes, n - No): ")
-            if spill_igjen() != 'y':
+            elif choice == '2':
                 break
 
+        dealer_value = calculate_hand_value(dealer_hand)
+        while dealer_value < 17:
+            dealer_hand.append(deck.pop())
+            dealer_value = calculate_hand_value(dealer_hand)
+
+        print(f"Dealer's hand: {dealer_hand}, total value: {dealer_value}")
+        chips = print_result(calculate_hand_value(player_hand), dealer_value, chips, bet)
+
+        if chips <= 0:
+            print("You have no chips left. Game over!")
+            break
+        else:
+            print(f"You have {chips} chips left.")
+
+        if input("Play another round? (y/n): ").lower() != 'y':
+            break
 
 play_blackjack()
-
-

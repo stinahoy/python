@@ -7,7 +7,7 @@ class Movie:
         self.score = score
 
     def info(self):
-        return f"{self.title} was released in {self.year} and currently has a score of {self.score}"
+        return f"{self.title} was r {self.year} and currently has a score of {self.score}"
 
 # Creating movie objects
 inception = Movie("Inception", 2010, 8.8)
